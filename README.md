@@ -26,6 +26,14 @@
  do so using aws configure and input your access id and key when prompted.
 
  Make sure the AWS account ID matches the account for which you are requesting model access. 
+
+ If you run into issue trying to integrate AWS, you may also use the ollama embeddings. To do so run this in your terminal: ollama run nomic-embed-text
+ Then edit your Streamlit_app.py to uncomment the follwing lines
+ # embedding_model = OllamaEmbeddings(model='nomic-embed-text')
+ # embedding_wrapper = embedding_model  # Compatible wrapper for Chroma
+ 
+You then need to disable the amazon embeddings, which is done by commenting those lines by placing a # before the bedrock_embeddings, and embedding_wrapper 
+lines associated with the amazon.titan embeddings.
  
  To create a new environment (conda)
  conda create -n new_env_name python=3.10 -y
