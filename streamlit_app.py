@@ -1,6 +1,7 @@
 import streamlit as st
 from chroma_db import init_chroma, add_to_chroma
 from bedrock_embedding import BedrockEmbeddingWrapper
+from langchain.embeddings import OllamaEmbeddings
 import os
 import tempfile
 import zipfile
@@ -18,7 +19,13 @@ llm = Ollama(model="mistral")
 cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
 # Embedding setup
+# Initialize Amazon Titan embeddings
 bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v1")
+embedding_wrapper = BedrockEmbeddingWrapper(bedrock_embeddings=bedrock_embeddings)
+
+# Optionally use Ollama embeddings (uncomment below to switch)
+# embedding_model = OllamaEmbeddings(model='nomic-embed-text')
+# embedding_wrapper = embedding_model  # Compatible wrapper for Chroma
 embedding_wrapper = BedrockEmbeddingWrapper(bedrock_embeddings=bedrock_embeddings)
 
 # Initialize ChromaDB
