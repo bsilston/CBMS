@@ -1,4 +1,4 @@
- rag-tutorial-v2
+# rag-tutorial-v2
  
   RAG (Retrieval Augmented Generation) is applied to an LLM to enable the model to
   field queries about your own information / data. LLM's have built in natural language
@@ -8,7 +8,7 @@
   then ingested by the model. The model is then able to answer queries specific to that
   information. 
 
-  RUNNING THE RAG APP
+#  RUNNING THE RAG APP
 
   We recommend created a new environment to execute the RAG program, as certain conflicts
   between libraries may emerge if using pytyon > 3.10
